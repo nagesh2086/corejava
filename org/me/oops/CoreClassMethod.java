@@ -40,14 +40,17 @@ public class CoreClassMethod {
 
 		NetworkStream nIS = new NetworkStream();
 		nIS.display();
+		nIS.showMeYourIntention();
 
 		SerialStream sIS = new SerialStream();
 		System.out.println("\n");
 		sIS.display();
+		sIS.showMeYourIntention();
 
 		PCIStream pciIS = new PCIStream();
 		System.out.println("\n");
 		pciIS.display();
+		pciIS.showMeYourIntention();
 	}
 
 }
