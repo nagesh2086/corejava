@@ -6,6 +6,8 @@ public class LegalArray {
 		// int [] myList = (5, 8, 2);
 		// int myList[][] = { 4, 9, 7, 0 };
 		int myList[][] = { { 4, 9, 7, 0 }, {} };
-		//int myList[] = { 4, 3, 7 };
+		int myList1[][] = new int[][] { { 4, 9, 7, 0 }, {} };
+		// int myList[] = { 4, 3, 7 };
+		int[] myNums = new int[] { 5, 3, 1, 4, 6 };
 	}
 }
