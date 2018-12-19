@@ -1,5 +1,7 @@
 package org.me.java.pass.by.value;
 
+import java.util.Arrays;
+
 /**
  * PASS BY COPY\VALUE? test scope of primitives in method if Op. is IN PLACE.
  * 
@@ -22,27 +24,16 @@ public class InPlaceOutPlaceOpOnArray {
 		squareArrayInPlace(intArray);
 
 		System.out.print("intArray after IN place op. ");
-		System.out.print("[ ");
-		for (int i : intArray) {
-			System.out.print(i + ", ");
-		}
-		System.out.println(" ]" + "\n");
+		System.out.println(Arrays.toString(intArray));
 
 		intArray = new int[] { 0, 2, 4, 8, 16, 32 };
 		int[] squaredArray = squareArrayOutOfPlace(intArray);
 
 		System.out.print("\nsquaredArray before OUT place op. ");
-		System.out.print("[ ");
-		for (int i : intArray) {
-			System.out.print(i + ", ");
-		}
-		System.out.println(" ]");
+		System.out.println(Arrays.toString(intArray));
+
 		System.out.print("\nsquaredArray after OUT place op. ");
-		System.out.print("[ ");
-		for (int i : squaredArray) {
-			System.out.print(i + ", ");
-		}
-		System.out.println(" ]");
+		System.out.println(Arrays.toString(squaredArray));
 	}
 
 	public static void primitiveInPlace(int x, int y) {
