@@ -2,8 +2,7 @@ package org.me.geeksforgeeks.java.search.sort;
 
 // Java implementation of recursive Binary Search 
 class BinarySearchRecursiveAndBottomUp {
-	// Returns index of x if it is present in arr[l..
-	// r], else return -1
+	
 	int binarySearchRecursive(int arr[], int l, int r, int x) {
 		if (r >= l) {
 			int mid = l + (r - l) / 2;
@@ -75,4 +74,3 @@ class BinarySearchRecursiveAndBottomUp {
 			System.out.println("BottomUp: Element found at index " + result);
 	}
 }
-/* This code is contributed by Rajat Mishra */
