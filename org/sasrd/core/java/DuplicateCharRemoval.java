@@ -1,8 +1,12 @@
 package org.sasrd.core.java;
 
-//Remove duplicate characters from given string and print string again.
-//w3schools --> w3chols
-//www2schooolss --> w3chols
+/**
+ * Remove duplicate characters from given string and print string again. Input -
+ * w3schools --> w3chols Input - www2schooolss --> w3chols
+ * 
+ * @author kekannag
+ *
+ */
 public class DuplicateCharRemoval {
 	public static void main(String argu[]) {
 		String str = "www2schooolss";
