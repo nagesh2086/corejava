@@ -16,6 +16,14 @@ import java.util.ListIterator;
  * 
  * Remove of iterator method would work. This is an exception.
  * 
+ * See description from JAVA DOC: Note that fail-fast behavior cannot be
+ * guaranteed as it is, generallyspeaking, impossible to make any hard
+ * guarantees in the presence ofunsynchronized concurrent modification.
+ * Fail-fast operationsthrow ConcurrentModificationException on a best-effort
+ * basis.Therefore, it would be wrong to write a program that depended on
+ * thisexception for its correctness: ConcurrentModificationExceptionshould be
+ * used only to detect bugs.
+ * 
  * @author kekannag
  *
  */
@@ -32,15 +40,12 @@ public class ConcurrentModification {
 		list.add("Kolkata");
 
 		ListIterator<String> listIterator = list.listIterator();
-		synchronized (ConcurrentModification.class) {
-			System.out.println(listIterator.next());
-			System.out.println(listIterator.next());
-			System.out.println(listIterator.next());
-		}
+
+		System.out.println(listIterator.next());
 		list.remove(0);
-		synchronized (ConcurrentModification.class) {
-			System.out.println(listIterator.next());
-		}
+		System.out.println(listIterator.next());
+		System.out.println(listIterator.next());
+		System.out.println(listIterator.next());
 	}
 
 }
