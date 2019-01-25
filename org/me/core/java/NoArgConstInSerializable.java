@@ -1,8 +1,12 @@
 package org.me.core.java;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.ObjectStreamException;
+import java.io.Serializable;
 
 /**
  * To allow subtypes of non-serializable classes to be serialized, thesubtype
@@ -15,32 +19,94 @@ import java.io.ObjectOutputStream;
  * 
  * Output: runtime exception is java.io.NotSerializableException
  * 
+ * Studied sequence of serialization and de-serialization methods.
+ * 1. WriteObject
+ * 2. WriteReplace
+ * 3. ReadObject
+ * 4. ReadReplace
  * @param className
  */
 public class NoArgConstInSerializable {
-	public static void main(String args[]) throws IOException {
-		A obj = new B("B:A:NoArgConstInSerializable");
-		FileOutputStream fos = new FileOutputStream("NoArgConstInSerializable");
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(obj);
-		oos.flush();
-		oos.close();
+	public static void main(String args[]) throws IOException, ClassNotFoundException {
+		A obj = null;
+		FileOutputStream out = null;
+		ObjectOutputStream oos = null;
+		try {
+			obj = new B("B:A:NoArgConstInSerializable");
+			out = new FileOutputStream("NoArgConstInSerializable");
+			oos = new ObjectOutputStream(out);
+			oos.writeObject(obj);
+			// oos.defaultWriteObject(); //throws NotActiveException if called outside
+			// writeObject() method.
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			oos.flush();
+			oos.close();
+		}
+		System.out.println(obj);
+
+		FileInputStream in;
+		ObjectInputStream ois = null;
+		A rObj = null;
+		try {
+			in = new FileInputStream("NoArgConstInSerializable");
+			ois = new ObjectInputStream(in);
+			rObj = (A) ois.readObject();
+		} finally {
+			ois.close();
+		}
+		System.out.println("Deserialized --> " + rObj);
+
 	}
 }
 
-class A {
-	String className;
+class A implements Serializable {
+	String classNameA;
 
 	public A(String className) {
-		this.className = className;
+		this.classNameA = className;
+	}
+
+	@Override
+	public String toString() {
+		return "A [classNameA=" + classNameA + "]";
 	}
 }
 
 class B extends A {
-	String className;
+	String classNameB;
 
 	public B(String className) {
 		super(className);
-		this.className = className;
+		this.classNameB = className;
+	}
+
+	private Object writeReplace() throws ObjectStreamException {
+		System.out.println("1. Write Replace");
+		return this;
+	}
+
+	private void writeObject(ObjectOutputStream out) throws IOException {
+		System.out.println("2. Write Object");
+	}
+
+	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+		System.out.println("3. Read object");
+	}
+
+	private Object readResolve() throws ObjectStreamException {
+		System.out.println("4. Read resolve");
+		return this;
+	}
+
+	@Override
+	public String toString() {
+		return "B [classNameB=" + classNameB + "]";
+	}
+
+	private void readObjectNoData() throws ObjectStreamException {
+		System.out.println("Read object No Data");
 	}
 }
