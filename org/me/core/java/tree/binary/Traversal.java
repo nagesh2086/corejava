@@ -1,4 +1,4 @@
-package org.me.core.java.tree.binary.level.order;
+package org.me.core.java.tree.binary;
 
 import java.util.LinkedList;
 import java.util.Queue;

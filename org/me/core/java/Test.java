@@ -1,4 +1,4 @@
-package org.me.core.java;
+/*package org.me.core.java;
 // First Parent class 
 class Parent1 
 { 
@@ -19,11 +19,11 @@ class Parent2
   
 // Error : Test is inheriting from multiple 
 // classes 
-public class Test extends Parent1, Parent2 
+public class Test //extends Parent1, Parent2 
 { 
    public static void main(String args[]) 
    { 
        Test t = new Test(); 
        t.fun(); 
    } 
-} 
+} */

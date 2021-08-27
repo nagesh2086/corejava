@@ -1,4 +1,4 @@
-package org.qualys.core.java.hackerrank;
+package org.me.qualys.core.java.hackerrank;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

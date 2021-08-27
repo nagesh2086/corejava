@@ -29,11 +29,11 @@ class Parent22 extends GrandParent
   
 // Error : Test is inheriting from multiple 
 // classes 
-public class GrandParentDPTest extends Parent11, Parent22 
+public class GrandParentDPTest //extends Parent11, Parent22 
 { 
    public static void main(String args[]) 
    { 
-       Test t = new Test(); 
-       t.fun(); 
+       /*Test t = new Test(); 
+       t.fun(); */
    } 
 }

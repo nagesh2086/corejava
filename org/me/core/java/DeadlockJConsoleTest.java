@@ -5,11 +5,11 @@ class Runnable_A implements Runnable {
 	public void run() {
 		synchronized (Runnable_A.class) {
 			System.out.println(getThreadName() + " acquired lock on Runnable_A");
-			//goToSleep(1000);
+			goToSleep(1000);
 
 			synchronized (Runnable_B.class) {
 				System.out.println(getThreadName() + " acquired lock on Runnable_B");
-				//goToSleep(1000);
+				goToSleep(1000);
 			}
 		}
 	}
@@ -32,11 +32,11 @@ class Runnable_B implements Runnable {
 	public void run() {
 		synchronized (Runnable_B.class) {
 			System.out.println(getThreadName() + " acquired lock on Runnable_B");
-			//goToSleep(1000);
+			goToSleep(1000);
 
 			synchronized (Runnable_A.class) {
 				System.out.println(getThreadName() + " acquired lock on Runnable_A");
-				//goToSleep(1000);
+				goToSleep(1000);
 
 			}
 		}
