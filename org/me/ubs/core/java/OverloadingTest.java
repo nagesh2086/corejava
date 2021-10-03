@@ -11,16 +11,21 @@ public class OverloadingTest {
 
 	public static void main(String[] args) throws Exception {// Remove throws clause from method signature
 		OverloadingTest t = new OverloadingTest();
-		System.out.println(t.getData("DFG"));
+		//System.out.println(t.getData("DFG"));
+		t.getData(15);
+		t.getData(new Integer(15));
+		t.getData(new Object());
 	}
 
-	private int getData(String string) throws Exception {
-		return 1;
+	/*public void getData(int i){
+		System.out.println("getData(int i):" + i);
 	}
-
-	//uncomment this method
-	/*
-	 * private int getData(String string) throws IOException { return 0; }
-	 */
-
+	
+	public void getData(Integer i){
+		System.out.println("getData(Integer i):" + i);
+	}*/
+	
+	public void getData(Object i){
+		System.out.println("getData(Object i):" + i);
+	}
 }
